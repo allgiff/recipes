@@ -9,14 +9,21 @@ import { Recipe } from "./recipe.model";
 export class RecipeService {
    
 
-    private recipes: Recipe[] = [
-        new Recipe('A Test Recipe', 'This is a test', 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', [new Ingredient('meat', 1), 
-    new Ingredient('french fries', 20)]),
-        new Recipe('Another Test Recipe', 'This is a test', 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', [new Ingredient('bun', 2), new Ingredient('meat', 1)])
-      ];
+    // private recipes: Recipe[] = [
+    //     new Recipe('A Test Recipe', 'This is a test', 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', [new Ingredient('meat', 1), 
+    // new Ingredient('french fries', 20)]),
+    //     new Recipe('Another Test Recipe', 'This is a test', 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', [new Ingredient('bun', 2), new Ingredient('meat', 1)])
+    //   ];
 
+    private recipes: Recipe[] = [];
+    
       constructor(private slService: ShoppingListService) {
 
+      }
+
+      setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
       }
 
       getRecipes() {
